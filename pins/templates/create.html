@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1>Welcome!</h1>
+    <h2>
+        {% if form.instance.pk %} Edit Pin {% else %} Create Pin {% endif %}
+
+        <form method="post" enctype="multipart/form-data" class="form mt-4">
+            {% csrf_token %}
+
+            {{ form.text.label_tag }}
+            {{ form.text }}
+            <label for="id_photo" class="upload-label">Upload Photo</label>
+            {{ form.photo }}
+
+            <button class="btn btn-success">Submit</button>
+            <a href="{% url 'home' %}" class="btn btn-warning">Back to home page</a>
+        </form>
+    </h2>
+
+    <style>
+        .form input[type="text"],
+        .form textarea {
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid #ccc;
+            padding: 8px 0;
+            outline: none;
+            resize: none;
+            margin-bottom: 20px;
+        }
+
+        .form input[type="text"]:focus,
+        .form textarea:focus {
+            border-bottom-color: #4F46E5;
+        }
+
+        .form input[type="file"] {
+            display: none;
+        }
+
+        .upload-label {
+            display: inline-block;
+            padding: 10px 16px;
+            background: #4F46E5;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+    </style>
+
+{% endblock %}
