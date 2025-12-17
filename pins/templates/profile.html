@@ -2,8 +2,8 @@
 
 {% block content %}
 
-<div class="container mt-3">
-  <form method="GET" class="d-flex mb-3">
+<div class="container m-3">
+  <form method="GET" class="d-flex">
     <input 
       type="text" 
       name="q" 
@@ -11,9 +11,14 @@
       placeholder="Search pins..."
       value="{{ request.GET.q }}"
     >
-    <button class="btn btn-dark" type="submit">
+    <button class="btn btn-dark me-2" type="submit">
       <i class="bi bi-search-heart"></i>
     </button>
+
+    <form action="{% url 'logout' %}" method="post">
+      <button class="btn btn-danger " type="submit">Logout</button>
+    </form>
+
   </form>
 </div>
 
